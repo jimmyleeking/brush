@@ -38,3 +38,84 @@ export:
 export-every:
   en: "every "
   zh-CN: 每
+scene:
+  en: Scene
+  zh-CN: 预览
+scene-prompt:
+  en: "The Feima 3DGS Training Tool is based on an open-source brush project, with only slight adjustments made to the UI."
+  zh-CN: "飞马3DGS训练工具"
+control:
+  en: Controls
+  zh-CN: "控制说明"
+btn-paused:
+  en:  "⏸ paused"
+  zh-CN:  "⏸ 已暂停"
+btn-training:
+  en:  "⏵ training"
+  zh-CN:  "⏵ 训练中"
+live-update-splat:
+  en: "🔴 Live update splats"
+  zh-CN:  "⏵ 实时预览"
+btn-export:
+  en: "⬆ Export"
+  zh-CN: "⬆ 导出成果"
+
+
+control-left-click:
+  en: "• Left click and drag to orbit"
+  zh-CN: "• 左键点击并拖动以环绕"
+control-right-click:
+  en: "• Right click, or left click + spacebar, and drag to look around."
+  zh-CN: "• 右键点击，或左键点击加空格键，然后拖动来环顾四周"
+control-middle-click:
+  en: "• Middle click, or left click + control, and drag to pan"
+  zh-CN: "• 中键点击，或左键点击加控制键，然后拖动以平移"
+control-other:
+  en: "• Scroll to zoom \n • WASD to fly, Q&E to move up & down.\n• Z&C to roll, X to reset roll\n• Shift to move faster"
+  zh-CN: "• 滚动以缩放\n• WASD 键飞行，Q 和 E 键上下移动• Z 和 C 键翻滚，X 键重置翻滚• Shift 键加速移动"
+stat:
+  en: Stats
+  zh-CN: "统计"
+gpu-memory:
+  en: "GPU memory"
+  zh-CN: "GPU内存"
+bytes-in-use:
+  en: "Bytes in use"
+  zh-CN: "已占用"
+bytes-reserved:
+  en:  "Bytes reserved"
+  zh-CN: "已保留"
+active-allocations:
+  en:  "Active allocations"
+  zh-CN: "已分配"
+gpu-name:
+  en:  "Name"
+  zh-CN: "显卡名称"
+gpu-type:
+  en:  "Type"
+  zh-CN: "显卡类型"
+gpu-driver:
+  en: "Driver"
+  zh-CN: "显卡驱动"
+gpu-info:
+  en: "GPU Info"
+  zh-CN: "显卡信息"
+splat-points:
+  en: "Splats"
+  zh-CN: "高斯点"
+train-steps:
+  en: "Train step"
+  zh-CN: "已迭代"
+steps-per-second:
+  en: "Steps/s"
+  zh-CN: "速度(次/秒)"
+last-eval:
+  en: "Last eval:"
+  zh-CN: "预计还剩"
+training-time:
+  en: "Training time"
+  zh-CN: "已训练时间"
+
+other:
+  en: ""
+  zh-CN: ""

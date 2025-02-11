@@ -17,6 +17,7 @@ use glam::{Quat, UVec2, Vec3};
 use tokio_with_wasm::alias as tokio_wasm;
 use tracing::trace_span;
 use web_time::Instant;
+use rust_i18n::t;
 
 use crate::app::{AppContext, AppPanel};
 
@@ -170,7 +171,7 @@ impl ScenePanel {
 
 impl AppPanel for ScenePanel {
     fn title(&self) -> String {
-        "Scene".to_owned()
+        t!("scene").into_owned()
     }
 
     fn on_message(&mut self, message: &ProcessMessage, context: &mut AppContext) {
@@ -231,16 +232,8 @@ impl AppPanel for ScenePanel {
 
         // Empty scene, nothing to show.
         if !context.training() && self.view_splats.is_empty() && self.err.is_none() && !self.zen {
-            ui.heading("Load a ply file or dataset to get started.");
+            ui.heading(t!("scene-prompt"));
             ui.add_space(5.0);
-            ui.label(
-                r#"
-Load a pretrained .ply file to view it
-
-Or load a dataset to train on. These are zip files with:
-    - a transforms.json and images, like the nerfstudio dataset format.
-    - COLMAP data, containing the `images` & `sparse` folder."#,
-            );
 
             ui.add_space(10.0);
 
@@ -322,9 +315,10 @@ For bigger training runs consider using the native app."#,
                     ui.add_space(15.0);
 
                     let label = if self.paused {
-                        "⏸ paused"
+                        t!("btn-paused")
                     } else {
-                        "⏵ training"
+                        t!("btn-training")
+
                     };
 
                     if ui.selectable_label(!self.paused, label).clicked() {
@@ -337,7 +331,7 @@ For bigger training runs consider using the native app."#,
                     ui.scope(|ui| {
                         ui.style_mut().visuals.selection.bg_fill = Color32::DARK_RED;
                         if ui
-                            .selectable_label(self.live_update, "🔴 Live update splats")
+                            .selectable_label(self.live_update, t!("live-update-splat"))
                             .clicked()
                         {
                             self.live_update = !self.live_update;
@@ -346,7 +340,7 @@ For bigger training runs consider using the native app."#,
 
                     ui.add_space(15.0);
 
-                    if ui.button("⬆ Export").clicked() {
+                    if ui.button(t!("btn-export")).clicked() {
                         let splats = splats.clone();
 
                         let fut = async move {
@@ -379,19 +373,13 @@ For bigger training runs consider using the native app."#,
                     }
                 }
 
-                ui.selectable_label(false, "Controls")
+                ui.selectable_label(false, t!("control"))
                     .on_hover_ui_at_pointer(|ui| {
-                        ui.heading("Controls");
-
-                        ui.label("• Left click and drag to orbit");
-                        ui.label(
-                            "• Right click, or left click + spacebar, and drag to look around.",
-                        );
-                        ui.label("• Middle click, or left click + control, and drag to pan");
-                        ui.label("• Scroll to zoom");
-                        ui.label("• WASD to fly, Q&E to move up & down.");
-                        ui.label("• Z&C to roll, X to reset roll");
-                        ui.label("• Shift to move faster");
+                        ui.heading(t!("control"));
+                        ui.label(t!("control-left-click"));
+                        ui.label(t!("control-right-click"));
+                        ui.label(t!("control-middle-click"));
+                        ui.label(t!("control-other"));
                     });
             });
         }

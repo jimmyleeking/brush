@@ -2,10 +2,10 @@ use crate::app::{AppContext, AppPanel};
 use brush_process::process_loop::ProcessMessage;
 use burn_jit::cubecl::Runtime;
 use burn_wgpu::{WgpuDevice, WgpuRuntime};
+use rust_i18n::t;
 use std::time::Duration;
 use web_time::Instant;
 use wgpu::AdapterInfo;
-
 pub(crate) struct StatsPanel {
     device: WgpuDevice,
 
@@ -61,7 +61,7 @@ fn bytes_format(bytes: u64) -> String {
 
 impl AppPanel for StatsPanel {
     fn title(&self) -> String {
-        "Stats".to_owned()
+        t!("stat").into_owned()
     }
 
     fn on_message(&mut self, message: &ProcessMessage, _: &mut AppContext) {
@@ -118,7 +118,7 @@ impl AppPanel for StatsPanel {
             .spacing([40.0, 4.0])
             .striped(true)
             .show(ui, |ui| {
-                ui.label("Splats");
+                ui.label(t!("splat-points"));
                 ui.label(format!("{}", self.num_splats));
                 ui.end_row();
 
@@ -133,15 +133,15 @@ impl AppPanel for StatsPanel {
                 }
 
                 if self.training_started {
-                    ui.label("Train step");
+                    ui.label(t!("train-steps"));
                     ui.label(format!("{}", self.last_train_step.1));
                     ui.end_row();
 
-                    ui.label("Steps/s");
+                    ui.label(t!("steps-per-second"));
                     ui.label(format!("{:.1}", self.train_iter_per_s));
                     ui.end_row();
 
-                    ui.label("Last eval:");
+                    ui.label(t!("last-eval"));
                     ui.label(if let Some(eval) = self.last_eval.as_ref() {
                         eval
                     } else {
@@ -149,7 +149,7 @@ impl AppPanel for StatsPanel {
                     });
                     ui.end_row();
 
-                    ui.label("Training time");
+                    ui.label(t!("training-time"));
                     // Round duration to seconds.
                     let elapsed = Duration::from_secs(self.start_load_time.elapsed().as_secs());
                     ui.label(format!("{}", humantime::Duration::from(elapsed)));
@@ -159,18 +159,18 @@ impl AppPanel for StatsPanel {
                 let client = WgpuRuntime::client(&self.device);
                 let memory = client.memory_usage();
 
-                ui.label("GPU memory");
+                ui.label(t!("gpu-memory"));
                 ui.end_row();
 
-                ui.label("Bytes in use");
+                ui.label(t!("bytes-in-use"));
                 ui.label(bytes_format(memory.bytes_in_use));
                 ui.end_row();
 
-                ui.label("Bytes reserved");
+                ui.label(t!("bytes-reserved"));
                 ui.label(bytes_format(memory.bytes_reserved));
                 ui.end_row();
 
-                ui.label("Active allocations");
+                ui.label(t!("active-allocations"));
                 ui.label(format!("{}", memory.number_allocs));
                 ui.end_row();
             });
@@ -182,18 +182,18 @@ impl AppPanel for StatsPanel {
                 .spacing([40.0, 4.0])
                 .striped(true)
                 .show(ui, |ui| {
-                    ui.label("GPU");
+                    ui.label(t!("gpu-info"));
                     ui.end_row();
 
-                    ui.label("Name");
+                    ui.label(t!("gpu-name"));
                     ui.label(&self.adapter_info.name);
                     ui.end_row();
 
-                    ui.label("Type");
+                    ui.label(t!("gpu-type"));
                     ui.label(format!("{:?}", self.adapter_info.device_type));
                     ui.end_row();
 
-                    ui.label("Driver");
+                    ui.label(t!("gpu-driver"));
                     ui.label(format!(
                         "{}, {}",
                         self.adapter_info.driver, self.adapter_info.driver_info
