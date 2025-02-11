@@ -197,7 +197,8 @@ impl AppContext {
 
     pub fn connect_to(&mut self, process: RunningProcess) {
         // reset context & view.
-        *self = Self::new(self.device.clone(), self.ctx.clone(), &self.cam_settings);
+        // !!!!FEIMA IMPORTANT TO DELETE COMMNET!!!!!
+        //*self = Self::new(self.device.clone(), self.ctx.clone(), &self.cam_settings);
 
         // Convert the receiver to a "reactive" receiver that wakes up the UI.
         self.running_process = Some(RunningProcess {

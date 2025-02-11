@@ -2,7 +2,7 @@ use crate::app::{AppContext, AppPanel};
 use brush_process::process_loop::ProcessMessage;
 use brush_train::scene::{Scene, SceneView, ViewImageType, ViewType};
 use egui::{pos2, Slider, TextureHandle, TextureOptions};
-
+use rust_i18n::t;
 struct SelectedView {
     index: usize,
     view_type: ViewType,
@@ -42,7 +42,7 @@ impl DatasetPanel {
 
 impl AppPanel for DatasetPanel {
     fn title(&self) -> String {
-        "Dataset".to_owned()
+        t!("dataset").into_owned()
     }
 
     fn on_message(&mut self, message: &ProcessMessage, context: &mut AppContext) {

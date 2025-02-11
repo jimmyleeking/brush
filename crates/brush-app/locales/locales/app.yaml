@@ -48,14 +48,14 @@ control:
   en: Controls
   zh-CN: "控制说明"
 btn-paused:
-  en:  "⏸ paused"
-  zh-CN:  "⏸ 已暂停"
+  en: "⏸ paused"
+  zh-CN: "⏸ 已暂停"
 btn-training:
-  en:  "⏵ training"
-  zh-CN:  "⏵ 训练中"
+  en: "⏵ training"
+  zh-CN: "⏵ 训练中"
 live-update-splat:
   en: "🔴 Live update splats"
-  zh-CN:  "⏵ 实时预览"
+  zh-CN: "⏵ 实时预览"
 btn-export:
   en: "⬆ Export"
   zh-CN: "⬆ 导出成果"
@@ -83,16 +83,16 @@ bytes-in-use:
   en: "Bytes in use"
   zh-CN: "已占用"
 bytes-reserved:
-  en:  "Bytes reserved"
+  en: "Bytes reserved"
   zh-CN: "已保留"
 active-allocations:
-  en:  "Active allocations"
+  en: "Active allocations"
   zh-CN: "已分配"
 gpu-name:
-  en:  "Name"
+  en: "Name"
   zh-CN: "显卡名称"
 gpu-type:
-  en:  "Type"
+  en: "Type"
   zh-CN: "显卡类型"
 gpu-driver:
   en: "Driver"
@@ -115,7 +115,9 @@ last-eval:
 training-time:
   en: "Training time"
   zh-CN: "已训练时间"
-
+dataset:
+  en: "Dataset"
+  zh-CN: "源图像"
 other:
   en: ""
   zh-CN: ""
