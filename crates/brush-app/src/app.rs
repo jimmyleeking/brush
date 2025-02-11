@@ -17,6 +17,13 @@ use egui_tiles::SimplificationOptions;
 use egui_tiles::{Container, Tile, TileId, Tiles};
 use glam::{Affine3A, Quat, Vec3};
 use std::collections::HashMap;
+use std::fs;
+use egui::{FontDefinitions, FontFamily, FontData, TextStyle};
+use egui::epaint::FontFamily::Proportional;
+i18n!("locales", fallback = "zh-CN");
+use rust_i18n::{i18n, t};
+
+
 
 pub(crate) trait AppPanel {
     fn title(&self) -> String;
@@ -223,6 +230,14 @@ impl App {
         cc: &eframe::CreationContext,
         create_callback: tokio::sync::oneshot::Sender<AppCreateCb>,
     ) -> Self {
+
+        // setting lang
+
+        rust_i18n::set_locale("zh-CN");
+
+        println!("{:?}", rust_i18n::available_locales!());
+        println!("{}", t!("title-settings"));
+
         // For now just assume we're running on the default
         let state = cc
             .wgpu_render_state
@@ -299,7 +314,7 @@ impl App {
         let root_container = if !zen {
             let loading_subs = vec![
                 tiles.insert_pane(Box::new(SettingsPanel::new())),
-                tiles.insert_pane(Box::new(PresetsPanel::new())),
+                //tiles.insert_pane(Box::new(PresetsPanel::new())),
             ];
             let loading_pane = tiles.insert_tab_tile(loading_subs);
 
@@ -413,6 +428,20 @@ impl App {
 
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _: &mut eframe::Frame) {
+
+        // 加载自定义字体
+        let mut fonts = FontDefinitions::default();
+
+
+        // 添加自定义字体文件
+        fonts.font_data.insert("my_font".to_owned(), Arc::from(FontData::from_static(include_bytes!("../assets/simhei.ttf"))));
+
+        // 将自定义字体设置为默认字体
+        fonts.families.get_mut(&FontFamily::Proportional).unwrap().insert(0, "my_font".to_owned());
+
+        // 设置字体
+        ctx.set_fonts(fonts);
+
         self.receive_messages();
 
         let main_panel_frame = egui::Frame::central_panel(ctx.style().as_ref()).inner_margin(0.0);
@@ -423,4 +452,5 @@ impl eframe::App for App {
                 self.tree.ui(&mut self.tree_ctx, ui);
             });
     }
+
 }

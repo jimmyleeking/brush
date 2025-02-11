@@ -1,0 +1,40 @@
+_version: 2
+title-settings:
+  en: Settings
+  zh-CN: 设置
+model-settings:
+  en: model settings
+  zh-CN: 模型设置
+shdegree:
+  en: Spherical Harmonics Degree
+  zh-CN: 球谐函数阶数
+max-image-resolution:
+  en: "Max image resolution:"
+  zh-CN: 最大图像分辨率
+training-data:
+  en: Training data
+  zh-CN: 训练数据
+training-data-prompt:
+  en: "Select a .ply to visualize, or a .zip with training data."
+  zh-CN: "加载.ply成果 或者zip原数据压缩包"
+load-file:
+  en: Load file
+  zh-CN: 选择文件
+load-dir:
+  en: Load directory
+  zh-CN: 选择文件夹
+training-settings:
+  en: Training Settings
+  zh-CN: 训练设置
+training-steps:
+  en: Train
+  zh-CN: 迭代次数
+space_steps:
+  en: " steps"
+  zh-CN: 次
+export:
+  en: Export
+  zh-CN: 导出
+export-every:
+  en: "every "
+  zh-CN: 每

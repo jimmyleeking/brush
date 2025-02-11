@@ -46,6 +46,9 @@ log.workspace = true
 clap.workspace = true
 anyhow.workspace = true
 
+rust-i18n = "3"
+
+
 # Default to wayland on linux. Change this to x11 if needed.
 # this perhaps could use a feature on our side as well,
 # so you could run with cargo run --no-default-features --features=11

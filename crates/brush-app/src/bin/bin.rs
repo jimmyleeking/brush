@@ -52,6 +52,7 @@ fn main() -> Result<(), clap::Error> {
                             let process =
                                 start_process(source, args.process, context.device.clone());
                             context.connect_to(process);
+
                         }
                     });
                 }
