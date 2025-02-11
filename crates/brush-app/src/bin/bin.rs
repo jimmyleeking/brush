@@ -58,9 +58,9 @@ fn main() -> Result<(), clap::Error> {
                 }
 
                 let title = if cfg!(debug_assertions) {
-                    "Brush  -  Debug"
+                    "FEIMA 3DGS  -  Debug"
                 } else {
-                    "Brush"
+                    "FEIMA 3DGS"
                 };
 
                 eframe::run_native(
